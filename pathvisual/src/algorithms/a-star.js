@@ -20,4 +20,21 @@ export default function aStar(grid, startnode, finishNode, heuristic) {
       const gScore = currentNode.g + 1;
       let gScoreIsBest = false;
       if (neighbor in visitedNodesInOrder || neighbor.isWall) continue;
+      if (!neighbor.isVisited) {
+        gScoreIsBest = true;
+        neighbor.h = heuristic(neighbor, finishNode);
+        neighbor.isVisited = true;
+        openList.push(neighbor);
+      } else if (gScore < neighbor.g) {
+        gScoreIsBest = true;
+      }
+      if (gScoreIsBest) {
+        neighbor.previousNode = currentNode;
+        neighbor.g = gScore;
+        neighbor.f = neighbor.g + neighbor.h;
+      }
+    }
+  }
+  return visitedNodesInOrder;
+}
 }
