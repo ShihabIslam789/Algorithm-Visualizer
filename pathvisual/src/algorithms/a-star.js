@@ -37,4 +37,9 @@ export default function aStar(grid, startnode, finishNode, heuristic) {
   }
   return visitedNodesInOrder;
 }
+
+export function aStarGetNeighbors(node, grid) {
+    const neighbors = [];
+    const { row, col } = node;
+    if (row > 0) {
 }
