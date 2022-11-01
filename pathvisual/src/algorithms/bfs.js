@@ -9,3 +9,6 @@ export default function bfs(grid, startNode, finishNode) {
         if (currentNode.isWall) continue;
         visitedNodesInOrder.push(currentNode);
         if (currentNode === finishNode) return visitedNodesInOrder;
+        if (currentNode.isVisited === false) {
+            currentNode.isVisited = true;
+            const neighbors = utils.getNeighbors(currentNode, grid);
