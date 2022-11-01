@@ -4,3 +4,8 @@ export default function bfs(grid, startNode, finishNode) {
     const visitedNodesInOrder = [];
     const nodeQueue = [];
     nodeQueue.push(startNode);
+    while (!!nodeQueue.length) {
+        const currentNode = nodeQueue.shift();
+        if (currentNode.isWall) continue;
+        visitedNodesInOrder.push(currentNode);
+        if (currentNode === finishNode) return visitedNodesInOrder;
