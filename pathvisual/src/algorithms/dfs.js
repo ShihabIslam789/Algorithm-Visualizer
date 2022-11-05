@@ -12,3 +12,11 @@ export default function dfs(grid, startNode, finishNode) {
     if (currentNode.isVisited === false) {
       currentNode.isVisited = true;
       const neighbors = utils.getNeighbors(currentNode, grid);
+      for (let neighbor of neighbors) {
+        nodeStack.push(neighbor);
+        neighbor.previousNode = currentNode;
+      }
+    }
+  }
+  return visitedNodesInOrder;
+}
