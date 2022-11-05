@@ -28,3 +28,10 @@ export function getAllNodes(grid) {
       }
       return neighbors.filter((neighbor) => !neighbor.isVisited);
     }
+    
+    
+export function manhattanDistance(node, finishNode) {
+  return (
+    Math.abs(node.row - finishNode.row) + Math.abs(node.col - finishNode.col)
+  );
+}
