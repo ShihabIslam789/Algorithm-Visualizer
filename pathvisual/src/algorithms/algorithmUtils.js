@@ -35,3 +35,12 @@ export function manhattanDistance(node, finishNode) {
     Math.abs(node.row - finishNode.row) + Math.abs(node.col - finishNode.col)
   );
 }
+export default function getNodesInShortestPathOrder(finishNode) {
+  const nodesInShortestPathOrder = [];
+  let currentNode = finishNode;
+  while (currentNode !== null) {
+    nodesInShortestPathOrder.unshift(currentNode);
+    currentNode = currentNode.previousNode;
+  }
+  return nodesInShortestPathOrder;
+}
