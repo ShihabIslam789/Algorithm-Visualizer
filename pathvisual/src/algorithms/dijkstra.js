@@ -6,3 +6,8 @@ export default function dijkstra(grid, startNode, finishNode) {
   startNode.distance = 0;
   while (!!unvisitedNodes.length) {
     const minNode = utils.sortedNodes(unvisitedNodes).shift();
+    if (minNode.isWall) continue;
+    if (minNode.distance === Infinity) return visitedNodesInOrder;
+    minNode.isVisited = true;
+    visitedNodesInOrder.push(minNode);
+    if (minNode === finishNode) return visitedNodesInOrder;
