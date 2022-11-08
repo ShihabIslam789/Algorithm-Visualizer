@@ -11,3 +11,10 @@ export default function dijkstra(grid, startNode, finishNode) {
     minNode.isVisited = true;
     visitedNodesInOrder.push(minNode);
     if (minNode === finishNode) return visitedNodesInOrder;
+    const neighbors = utils.getNeighbors(minNode, grid);
+    for (let neighbor of neighbors) {
+      neighbor.distance = minNode.distance + 1;
+      neighbor.previousNode = minNode;
+    }
+  }
+}
