@@ -7,3 +7,6 @@ export default function greedyBfs(grid, startNode, finishNode, heuristic) {
   while (!!nodePQ.length) {
     const currentNode = nodePQ.shift();
     if (currentNode.isWall) continue;
+    visitedNodesInOrder.push(currentNode);
+    if (currentNode === finishNode) return visitedNodesInOrder;
+    if (currentNode.isVisited === false) {
