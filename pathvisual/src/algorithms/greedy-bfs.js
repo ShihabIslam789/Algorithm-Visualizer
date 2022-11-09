@@ -10,3 +10,7 @@ export default function greedyBfs(grid, startNode, finishNode, heuristic) {
     visitedNodesInOrder.push(currentNode);
     if (currentNode === finishNode) return visitedNodesInOrder;
     if (currentNode.isVisited === false) {
+        currentNode.isVisited = true;
+      const neighbors = utils.getNeighbors(currentNode, grid);
+      for (let neighbor of neighbors) {
+        nodePQ.push(neighbor);
