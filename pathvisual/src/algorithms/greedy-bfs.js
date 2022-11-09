@@ -14,3 +14,13 @@ export default function greedyBfs(grid, startNode, finishNode, heuristic) {
       const neighbors = utils.getNeighbors(currentNode, grid);
       for (let neighbor of neighbors) {
         nodePQ.push(neighbor);
+        neighbor.previousNode = currentNode;
+        nodePQ.sort(
+          (node1, node2) =>
+            heuristic(node1, finishNode) - heuristic(node2, finishNode)
+        );
+      }
+    }
+  }
+  return visitedNodesInOrder;
+}
