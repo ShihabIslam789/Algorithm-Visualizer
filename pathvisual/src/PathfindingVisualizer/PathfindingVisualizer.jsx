@@ -14,3 +14,17 @@ let START_NODE_ROW = 10;
 let START_NODE_COL = 10;
 let FINISH_NODE_ROW = 10;
 let FINISH_NODE_COL = 40;
+
+const GRID_HEIGHT = 20;
+const GRID_WIDTH = 50;
+
+export default class PathfindingVisualizer extends Component {
+  constructor() {
+    super();
+    this.state = {
+      grid: [],
+      mouseIsPressed: false,
+      specialNodePressed: "none",
+      currentAlgorithm: "dijkstra", // default
+    };
+  }
