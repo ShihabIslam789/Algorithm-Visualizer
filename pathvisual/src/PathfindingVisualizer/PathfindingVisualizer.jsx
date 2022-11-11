@@ -335,3 +335,27 @@ export default class PathfindingVisualizer extends Component {
               id="algorithm-select"
               onChange={() => this.changeCurrentAlgo()}
             >
+              <option value="dijkstra">Dijkstra's Algorithm</option>
+              <option value="dfs">Depth-first Search</option>
+              <option value="bfs">Breadth-first Search</option>
+              <option value="greedy-bfs">Greedy Best-first Search</option>
+              <option value="a-star">A* Search</option>
+            </select>
+          </div>
+          <button id="viz-btn" onClick={() => this.visualizeAlgorithm()}>
+            Visualize!
+          </button>
+          <button id="clear-btn" onClick={() => this.clearGrid()}>
+            Clear Grid
+          </button>
+          <button id="src-btn" onClick={() => this.githubLink()}>
+            Source Code
+          </button>
+        </div>
+        <p id="instructions">
+          Instructions: Choose an algorithm. You can draw "walls" or change the
+          positions of the start and end nodes by clicking and dragging your
+          mouse across the grid. Click the "Visualize!" button to see the
+          algorithm explore the grid and find a path from the start node to the
+          end node.
+          </p>
