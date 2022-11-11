@@ -412,3 +412,31 @@ export default class PathfindingVisualizer extends Component {
     );
   }
 }
+
+const createInitialGrid = () => {
+  const grid = [];
+  for (let row = 0; row < GRID_HEIGHT; row++) {
+    const currentRow = [];
+    for (let col = 0; col < GRID_WIDTH; col++) {
+      currentRow.push(createNode(row, col));
+    }
+    grid.push(currentRow);
+  }
+  return grid;
+};
+
+const createNode = (row, col) => {
+  return {
+    row,
+    col,
+    isStart: row === START_NODE_ROW && col === START_NODE_COL,
+    isFinish: row === FINISH_NODE_ROW && col === FINISH_NODE_COL,
+    distance: Infinity,
+    isVisited: false,
+    isWall: false,
+    previousNode: null,
+    g: 0,
+    h: 0,
+    f: 0,
+  };
+};
