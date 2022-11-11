@@ -303,3 +303,35 @@ export default class PathfindingVisualizer extends Component {
       }
     }
   }
+
+  showAlgoDescription() {
+    const { currentAlgorithm } = this.state;
+    const allDescs = document.getElementById("algo-desc");
+    const individualDescs = allDescs.getElementsByTagName("*");
+    const currAlgoID = `${currentAlgorithm}-desc`;
+    for (let i of individualDescs) {
+      if (i.id === currAlgoID) {
+        i.style.display = "block";
+      } else {
+        i.style.display = "none";
+      }
+    }
+  }
+
+  githubLink() {
+    window.open("https://github.com/ShihabIslam789/pathvisual");
+  }
+  render() {
+    const { grid, mouseIsPressed } = this.state;
+    return (
+      <div id="page">
+        <div id="navbar">
+          <header className="header">
+            <h1>Pathfinding Visualizer</h1>
+          </header>
+          <div id="algo-select-package">
+            <label id="algo-select-label">Choose an algorithm:</label>
+            <select
+              id="algorithm-select"
+              onChange={() => this.changeCurrentAlgo()}
+            >
