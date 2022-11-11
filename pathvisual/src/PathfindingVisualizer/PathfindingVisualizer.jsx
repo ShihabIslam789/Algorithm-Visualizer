@@ -440,3 +440,33 @@ const createNode = (row, col) => {
     f: 0,
   };
 };
+
+const createNewGridWithWallToggled = (grid, row, col) => {
+  const newGrid = grid.slice();
+  const node = newGrid[row][col];
+  const newNode = {
+    ...node,
+    isWall: true,
+  };
+  newGrid[row][col] = newNode;
+  return newGrid;
+};
+
+
+const createNewGridWithStartNodeToggled = (grid, row, col) => {
+  const newGrid = grid.slice();
+
+  const oldStartNode = newGrid[START_NODE_ROW][START_NODE_COL];
+  oldStartNode.isStart = false;
+
+  START_NODE_ROW = row;
+  START_NODE_COL = col;
+  const node = newGrid[row][col];
+  const newNode = {
+    ...node,
+    isStart: true,
+  };
+  newGrid[row][col] = newNode;
+
+  return newGrid;
+};
