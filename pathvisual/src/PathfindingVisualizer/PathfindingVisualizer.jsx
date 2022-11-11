@@ -359,3 +359,32 @@ export default class PathfindingVisualizer extends Component {
           algorithm explore the grid and find a path from the start node to the
           end node.
           </p>
+          <header id="algo-desc">
+          <h3 id="dijkstra-desc">
+            Dijkstra's algorithm is a weighted search algorithm that guarantees
+            the shortest path!
+          </h3>
+          <h3 id="dfs-desc">
+            Depth-first search is an weighted search algorithm that does not
+            guarantee the shortest path!
+          </h3>
+          <h3 id="bfs-desc">
+            Breadth-first search is an unweighted search algorithm that
+            guarantees the shortest path!
+          </h3>
+          <h3 id="greedy-bfs-desc">
+            Greedy best-first search is a weighted search algorithm that does
+            not guarantee the shortest path!
+          </h3>
+          <h3 id="a-star-desc">
+            A* search is a weighted search algorithm that guarantees the
+            shortest path!
+          </h3>
+        </header>
+        <div id="grid">
+          {grid.map((row, rowIdx) => {
+            return (
+              <div key={rowIdx} className="row">
+                {row.map((node, nodeIdx) => {
+                  const { row, col, isFinish, isStart, isWall } = node;
+                  return (
