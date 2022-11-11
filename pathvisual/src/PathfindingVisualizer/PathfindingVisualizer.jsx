@@ -180,3 +180,9 @@ export default class PathfindingVisualizer extends Component {
       }, 10 * i);
     }
   }
+
+  visualizeDijkstra(grid, startNode, finishNode) {
+    const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
+    const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
+    this.animateAlgorithm(visitedNodesInOrder, nodesInShortestPathOrder);
+  }
