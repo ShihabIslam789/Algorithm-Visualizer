@@ -209,3 +209,63 @@ export default class PathfindingVisualizer extends Component {
     const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
     this.animateAlgorithm(visitedNodesInOrder, nodesInShortestPathOrder);
   }
+
+  visualizeAStar(grid, startNode, finishNode) {
+    const visitedNodesInOrder = aStar(
+      grid,
+      startNode,
+      finishNode,
+      manhattanDistance
+    );
+    const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
+    this.animateAlgorithm(visitedNodesInOrder, nodesInShortestPathOrder);
+  }
+  visualizeAlgorithm() {
+    this.clearGrid(true);
+    const { grid } = this.state;
+    const startNode = grid[START_NODE_ROW][START_NODE_COL];
+    const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
+    switch (this.state.currentAlgorithm) {
+      case "dijkstra":
+        this.visualizeDijkstra(grid, startNode, finishNode);
+        break;
+      case "dfs":
+        this.visualizeDFS(grid, startNode, finishNode);
+        break;
+      case "bfs":
+        this.visualizeBFS(grid, startNode, finishNode);
+        break;
+      case "greedy-bfs":
+        this.visualizeGreedyBFS(grid, startNode, finishNode);
+        break;
+      case "a-star":
+        this.visualizeAStar(grid, startNode, finishNode);
+        break;
+      default:
+    }
+    this.showAlgoDescription();
+  }
+
+  changeCurrentAlgo() {
+    const algorithmSelect = document.getElementById("algorithm-select");
+    const selectedAlgorithm =
+      algorithmSelect.options[algorithmSelect.selectedIndex].value;
+    switch (selectedAlgorithm) {
+      case "dijkstra":
+        this.setState({ currentAlgorithm: "dijkstra" });
+        break;
+      case "dfs":
+        this.setState({ currentAlgorithm: "dfs" });
+        break;
+      case "bfs":
+        this.setState({ currentAlgorithm: "bfs" });
+        break;
+      case "greedy-bfs":
+        this.setState({ currentAlgorithm: "greedy-bfs" });
+        break;
+      case "a-star":
+        this.setState({ currentAlgorithm: "a-star" });
+        break;
+      default:
+    }
+  }
