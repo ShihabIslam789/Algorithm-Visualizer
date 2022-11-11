@@ -162,3 +162,21 @@ export default class PathfindingVisualizer extends Component {
         }, 10 * i);
         return;
       }
+      setTimeout(() => {
+        const node = visitedNodesInOrder[i];
+        if (i === 0) {
+          document.getElementById(`node (${node.row},${node.col})`).className =
+            "node start-node-visited";
+        } else if (
+          i === visitedNodesInOrder.length - 1 &&
+          nodesInShortestPathOrder.length > 1
+        ) {
+          document.getElementById(`node (${node.row},${node.col})`).className =
+            "node finish-node-visited";
+        } else {
+          document.getElementById(`node (${node.row},${node.col})`).className =
+            "node node-visited";
+        }
+      }, 10 * i);
+    }
+  }
