@@ -470,3 +470,21 @@ const createNewGridWithStartNodeToggled = (grid, row, col) => {
 
   return newGrid;
 };
+
+
+const createNewGridWithFinishNodeToggled = (grid, row, col) => {
+  const newGrid = grid.slice();
+
+  const oldFinishNode = newGrid[FINISH_NODE_ROW][FINISH_NODE_COL];
+  oldFinishNode.isFinish = false;
+
+  const node = newGrid[row][col];
+  const newNode = {
+    ...node,
+    isFinish: true,
+  };
+  newGrid[row][col] = newNode;
+  FINISH_NODE_ROW = row;
+  FINISH_NODE_COL = col;
+  return newGrid;
+};
