@@ -50,3 +50,29 @@ export default class PathfindingVisualizer extends Component {
         mouseIsPressed: true,
         specialNodePressed: "start",
       });
+    } else if (node.isFinish) {
+        const newGrid = createNewGridWithFinishNodeToggled(
+          this.state.grid,
+          row,
+          col
+        );
+        this.setState({
+          grid: newGrid,
+          mouseIsPressed: true,
+          specialNodePressed: "finish",
+        });
+      } else {
+        const newGrid = createNewGridWithWallToggled(this.state.grid, row, col);
+        this.setState({ grid: newGrid, mouseIsPressed: true });
+      }
+    }
+  
+    handleMouseEnter(row, col) {
+        const button = document.getElementById("viz-btn");
+        if (!this.state.mouseIsPressed || button.disabled === true) return;
+        if (this.state.specialNodePressed === "start") {
+          const newGrid = createNewGridWithStartNodeToggled(
+            this.state.grid,
+            row,
+            col
+          );
