@@ -28,3 +28,13 @@ export default class PathfindingVisualizer extends Component {
       currentAlgorithm: "dijkstra", // default
     };
   }
+  componentDidMount() {
+    const grid = createInitialGrid();
+    this.setState({ grid });
+  }
+  handleMouseDown(row, col) {
+    // if buttons are disabled, don't produce walls either
+    const button = document.getElementById("viz-btn");
+    if (button.disabled === true) {
+      return;
+    }
