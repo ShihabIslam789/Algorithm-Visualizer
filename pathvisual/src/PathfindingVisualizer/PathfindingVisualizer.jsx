@@ -151,3 +151,14 @@ export default class PathfindingVisualizer extends Component {
       }, 30 * i);
     }
   }
+
+  animateAlgorithm(visitedNodesInOrder, nodesInShortestPathOrder) {
+    // disable button input while the algorithm is running
+    this.toggleInputs(true);
+    for (let i = 0; i <= visitedNodesInOrder.length; i++) {
+      if (i === visitedNodesInOrder.length) {
+        setTimeout(() => {
+          this.animateShortestPath(nodesInShortestPathOrder);
+        }, 10 * i);
+        return;
+      }
