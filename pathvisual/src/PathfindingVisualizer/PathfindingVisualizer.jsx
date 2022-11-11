@@ -135,3 +135,19 @@ export default class PathfindingVisualizer extends Component {
             document.getElementById(
               `node (${node.row},${node.col})`
             ).className = "node start-node-shortest-path";
+        } else if (i === nodesInShortestPathOrder.length - 1) {
+            document.getElementById(
+              `node (${node.row},${node.col})`
+            ).className = "node finish-node-shortest-path";
+            this.toggleInputs(false);
+          } else {
+            document.getElementById(
+              `node (${node.row},${node.col})`
+            ).className = "node node-shortest-path";
+          }
+        } else {
+          this.toggleInputs(false);
+        }
+      }, 30 * i);
+    }
+  }
