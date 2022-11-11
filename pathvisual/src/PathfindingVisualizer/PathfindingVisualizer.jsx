@@ -279,3 +279,27 @@ export default class PathfindingVisualizer extends Component {
       node.isWall = false;
     }
   }
+
+  clearGrid(keepWall = false) {
+    const { grid } = this.state;
+    for (let row of grid) {
+      for (let node of row) {
+        if (node.row === START_NODE_ROW && node.col === START_NODE_COL) {
+          document.getElementById(`node (${node.row},${node.col})`).className =
+            "node node-start";
+        } else if (
+          node.row === FINISH_NODE_ROW &&
+          node.col === FINISH_NODE_COL
+        ) {
+          document.getElementById(`node (${node.row},${node.col})`).className =
+            "node node-finish";
+        } else if (node.isWall && keepWall) {
+          continue;
+        } else {
+          document.getElementById(`node (${node.row},${node.col})`).className =
+            "node ";
+        }
+        this.resetNode(node, keepWall);
+      }
+    }
+  }
