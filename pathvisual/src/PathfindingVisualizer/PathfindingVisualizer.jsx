@@ -269,3 +269,13 @@ export default class PathfindingVisualizer extends Component {
       default:
     }
   }
+
+  
+  resetNode(node, keepWall = false) {
+    node.distance = Infinity;
+    node.isVisited = false;
+    node.previousNode = null;
+    if (!keepWall) {
+      node.isWall = false;
+    }
+  }
