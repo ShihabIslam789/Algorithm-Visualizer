@@ -38,3 +38,15 @@ export default class PathfindingVisualizer extends Component {
     if (button.disabled === true) {
       return;
     }
+    const node = this.state.grid[row][col];
+    if (node.isStart) {
+      const newGrid = createNewGridWithStartNodeToggled(
+        this.state.grid,
+        row,
+        col
+      );
+      this.setState({
+        grid: newGrid,
+        mouseIsPressed: true,
+        specialNodePressed: "start",
+      });
