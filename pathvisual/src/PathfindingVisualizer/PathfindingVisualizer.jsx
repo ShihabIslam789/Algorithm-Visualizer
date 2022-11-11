@@ -76,3 +76,16 @@ export default class PathfindingVisualizer extends Component {
             row,
             col
           );
+          this.setState({ grid: newGrid });
+    } else if (this.state.specialNodePressed === "finish") {
+      const newGrid = createNewGridWithFinishNodeToggled(
+        this.state.grid,
+        row,
+        col
+      );
+      this.setState({ grid: newGrid });
+    } else {
+      const newGrid = createNewGridWithWallToggled(this.state.grid, row, col);
+      this.setState({ grid: newGrid });
+    }
+  }
