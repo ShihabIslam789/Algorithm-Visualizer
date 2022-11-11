@@ -124,3 +124,14 @@ export default class PathfindingVisualizer extends Component {
       }
     }
   }
+
+  animateShortestPath(nodesInShortestPathOrder) {
+    for (let i = 0; i < nodesInShortestPathOrder.length; i++) {
+      setTimeout(() => {
+        const node = nodesInShortestPathOrder[i];
+        // console.log(node);
+        if (nodesInShortestPathOrder.length > 1) {
+          if (i === 0) {
+            document.getElementById(
+              `node (${node.row},${node.col})`
+            ).className = "node start-node-shortest-path";
