@@ -321,7 +321,7 @@ export default class PathfindingVisualizer extends Component {
   }
 
   githubLink() {
-    window.open("https://github.com/vincent-ngo31/pathfinding-visualizer");
+    window.open("https://github.com/ShihabIslam789/pathfinding-visualizer");
   }
 
   render() {
