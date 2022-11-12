@@ -22,3 +22,15 @@ export default class Node extends Component {
       : isWall
       ? "node-wall"
       : "";
+
+      return (
+        <div
+          id={`node (${row},${col})`}
+          className={`node ${nodeDescriptor}`}
+          onMouseDown={() => onMouseDown(row, col)}
+          onMouseEnter={() => onMouseEnter(row, col)}
+          onMouseUp={() => onMouseUp()}
+        ></div>
+      );
+    }
+  }
